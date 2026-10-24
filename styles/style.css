@@ -1,0 +1,424 @@
+:root {
+  /* Light theme */
+  --primary-color: #0d5794;
+  --bg-color: #ceddf5;
+  --light-bg-color: #ffffff;
+  --text-color: #13394e;
+  --light-text-color: #5e81ea;
+  --primary-text-color: #ffffff;
+  --transition-speed: 0.3s;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 30px;
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 30px;
+  background: var(--primary-color);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--bg-color);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  transition: background-color var(--transition-speed) ease,
+    color var(--transition-speed) ease;
+}
+
+body.dark {
+  /* Dark theme */
+  --primary-color: #1a378d;
+  --bg-color: #4a6e8efe;
+  --light-bg-color: #123f5c;
+  --text-color: #f0fdfa;
+  --light-text-color: #ace8f4;
+  --primary-text-color: #ffffff;
+
+  text-shadow: 0 0 2px rgba(46, 113, 175, 0.5);
+}
+
+.container {
+  position: relative;
+  width: 1200px;
+  padding: 0 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.container .card {
+  flex: 1;
+  padding: 30px;
+  border-radius: 20px;
+  background-color: var(--light-bg-color);
+  transition: background-color var(--transition-speed) ease,
+    border-color var(--transition-speed) ease;
+}
+
+.container .card .from,
+.container .card .to {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.container .card .from {
+  margin-right: 20px;
+}
+
+.container .card .to {
+  margin-left: 20px;
+}
+
+.container .card .heading {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-color);
+  white-space: nowrap;
+}
+
+.dropdown-container {
+  position: relative;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.dropdown-container .dropdown-toggle {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  border-radius: 30px;
+  background-color: var(--bg-color);
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+  color: var(--text-color);
+}
+
+.dropdown-container .dropdown-toggle span {
+  flex: 1;
+  margin-left: 10px;
+}
+
+.dropdown-container .dropdown-toggle ion-icon {
+  font-size: 20px;
+  transition: transform var(--transition-speed) ease;
+}
+
+.dropdown-container.active .dropdown-toggle {
+  border-radius: 20px 20px 0 0;
+}
+
+.dropdown-container.active .dropdown-toggle ion-icon:last-child {
+  transform: rotate(180deg);
+}
+
+.dropdown-container .dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 300px;
+  overflow: auto;
+  display: none;
+  padding: 20px;
+  z-index: 1;
+  list-style: none;
+  flex-direction: column;
+  background-color: var(--bg-color);
+  transition: opacity var(--transition-speed) ease,
+    transform var(--transition-speed) ease;
+  border-radius: 0 0 20px 20px;
+}
+
+.dropdown-container .dropdown-menu::-webkit-scrollbar {
+  display: none;
+}
+
+.dropdown-container.active .dropdown-menu {
+  display: flex;
+}
+
+.dropdown-container .dropdown-menu li {
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-bottom: 5px;
+  border-bottom: 1px solid var(--light-bg-color);
+  transition: all var(--transition-speed) ease;
+}
+
+.dropdown-container .dropdown-menu li:hover {
+  background-color: var(--light-bg-color);
+}
+.dropdown-container .dropdown-menu li.active {
+  color: var(--primary-text-color);
+  background-color: var(--primary-color);
+  box-shadow: 0 0 5px var(--primary-color);
+}
+
+.container .text-area {
+  position: relative;
+}
+
+.container textarea {
+  width: 100%;
+  padding: 20px;
+  margin: 10px 0;
+  background-color: transparent;
+  resize: none;
+  outline: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 20px;
+  transition: color var(--transition-speed) ease;
+}
+
+.container textarea::placeholder {
+  color: var(--light-text-color);
+}
+
+.container textarea:disabled {
+  color: var(--text-color);
+  -webkit-text-fill-color: var(--text-color);
+  opacity: 1;
+}
+
+.container .text-area .chars {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 10px;
+  font-size: 0.8rem;
+  color: var(--light-text-color);
+}
+
+.card-bottom {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 20px;
+  border-top: 1px solid var(--bg-color);
+  transition: border-color var(--transition-speed) ease;
+}
+
+.card-bottom p {
+  margin-bottom: 20px;
+}
+
+.btn-container {
+  display: flex;
+  gap: 10px;
+}
+
+.card-bottom label,
+.card-bottom button {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 0 20px;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  font-size: 15px;
+  transition: all var(--transition-speed) ease;
+}
+
+.card-bottom label:hover,
+.card-bottom button:hover {
+  color: var(--primary-text-color);
+  background-color: var(--primary-color);
+  box-shadow: 0 0 10px var(--primary-color);
+}
+
+.card-bottom span {
+  pointer-events: none;
+}
+
+.card-bottom ion-icon {
+  font-size: 22px;
+}
+
+.container .center {
+  position: relative;
+}
+
+.swap-position {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 3px solid var(--bg-color);
+  transition: all var(--transition-speed) ease;
+  color: var(--primary-text-color);
+  background-color: var(--primary-color);
+  box-shadow: 0 0 10px var(--primary-color);
+}
+
+.swap-position ion-icon {
+  font-size: 25px;
+}
+
+.swap-position:hover {
+  transform: translateX(-50%) scale(1.1);
+  box-shadow: 0 0 20px var(--primary-color), 0 0 30px var(--primary-color);
+}
+
+.mode {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1;
+}
+
+.toggle {
+  position: relative;
+  cursor: pointer;
+}
+
+.toggle-track {
+  width: 50px;
+  height: 30px;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  padding: 0 3px;
+  justify-content: space-between;
+  background-color: var(--light-bg-color);
+  border: 1px solid var(--light-text-color);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: all var(--transition-speed) ease;
+}
+
+.toggle-track:hover {
+  border-color: var(--primary-color);
+}
+
+.toggle-checkbox {
+  display: none;
+}
+
+.toggle-thumb {
+  position: absolute;
+  top: 2.5px;
+  left: 2.5px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55),
+    background-color var(--transition-speed) ease;
+}
+
+.toggle input:checked ~ .toggle-thumb {
+  transform: translateX(20px);
+}
+
+.toggle img {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55),
+    filter var(--transition-speed) ease;
+  filter: drop-shadow(0 0 2px var(--text-color));
+}
+
+.toggle-track img:last-of-type {
+  transform: scale(0.6);
+}
+
+.toggle input:checked ~ img:first-of-type {
+  transform: scale(0.6);
+  filter: grayscale(1) brightness(1.5);
+}
+
+.toggle input:checked ~ img:last-of-type {
+  transform: scale(1) rotate(360deg);
+  filter: none;
+}
+
+.dropdown-container .dropdown-toggle:focus-visible,
+.card-bottom label:focus-visible,
+.card-bottom button:focus-visible,
+.swap-position:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 3px;
+}
+
+body.dark .dropdown-container .dropdown-toggle:focus-visible,
+body.dark .card-bottom label:focus-visible,
+body.dark .card-bottom button:focus-visible,
+body.dark .swap-position:focus-visible {
+  outline: none;
+  box-shadow: 0 0 10px var(--primary-color), 0 0 0 2px var(--light-bg-color),
+    0 0 0 4px var(--primary-color);
+}
+
+@media (max-width: 800px) {
+  .container {
+    width: 100%;
+    margin-top: 20px;
+    flex-direction: column;
+  }
+
+  .container .card {
+    width: 100%;
+  }
+
+  .container .card .from {
+    margin-right: 0;
+  }
+
+  .container .card .to {
+    margin-left: 0;
+  }
+
+  .container .card .from,
+  .container .card .to {
+    flex-direction: column;
+  }
+
+  .swap-position {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .swap-position:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+
+  .swap-position ion-icon {
+    transform: rotate(90deg);
+  }
+}
